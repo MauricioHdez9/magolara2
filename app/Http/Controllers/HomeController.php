@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,8 +26,14 @@ class HomeController extends Controller
         return view('home');
     }
     
-   public function report()
+   public function getreport()
     {
-        return view('report');
+        $categories = Category::where('project_id',1)->get();//solo traira los datos que concida con 1
+        return view('report')->with(compact('categories'));
+    }
+    public function postreport()
+    {
+        $categories = Category::where('project_id',1)->get();//solo traira los datos que concida con 1
+        return view('report')->with(compact('categories'));
     }
 }

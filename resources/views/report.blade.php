@@ -6,10 +6,16 @@
     <div class="panel-heading">Dashboard</div>
 
     <div class="panel-body">
-        <form action="">
+        <form action="" method='POST'>
+            {{csrf_field()}} 
             <div class="form-group">
                 <label for="category_id">categoria</label>
-                <select name="category_id" class="form-control" id=""></select>
+                <select name="category_id" class="form-control" id="">
+                    <option value="0">general</option>
+                    @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <select name="severity" class="form-control" id="">
